@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class AlumnosController extends Controller {
 
     public function index() {
-        $clinics = Alumnos::all();
-        return response()->json($clinics);
+        $alumnos = Alumnos::all();
+        return response()->json($alumnos);
     }
 
     public function getAlumnos($id) {
