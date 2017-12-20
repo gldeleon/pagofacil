@@ -12,7 +12,7 @@ class AlumnosController extends Controller {
 
     public function index() {
         $alumnos = Alumnos::all();        
-        if ($calificacion) {
+        if ($alumnos) {
             return response()->json()->isOk($alumnos);
         } else {
             return response()->json()->isClientError();
@@ -26,7 +26,7 @@ class AlumnosController extends Controller {
                                 LEFT JOIN t_materias mat ON cal.id_t_materias=mat.id_t_materias
                                 WHERE al.id_t_usuarios = " . $id . "");
         //dd($alumnos);
-        if ($calificacion) {
+        if ($alumnos) {
             return response()->json()->isOk($alumnos);
         } else {
             return response()->json()->isClientError();
