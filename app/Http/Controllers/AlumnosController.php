@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\DB;
 class AlumnosController extends Controller {
 
     public function index() {
-        $alumnos = Alumnos::all();
-        return response()->json($alumnos);
+        $alumnos = Alumnos::all();        
+        if ($calificacion) {
+            return response()->json()->isOk($alumnos);
+        } else {
+            return response()->json()->isClientError();
+        }
     }
 
     public function getAlumnos($id) {
@@ -22,7 +26,11 @@ class AlumnosController extends Controller {
                                 LEFT JOIN t_materias mat ON cal.id_t_materias=mat.id_t_materias
                                 WHERE al.id_t_usuarios = " . $id . "");
         //dd($alumnos);
-        return response()->json($alumnos);
+        if ($calificacion) {
+            return response()->json()->isOk($alumnos);
+        } else {
+            return response()->json()->isClientError();
+        }        
     }
 
 }
